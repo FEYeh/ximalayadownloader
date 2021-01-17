@@ -1,0 +1,165 @@
+body{
+	width: 350px;
+	height: 400px;
+	overflow: hidden;
+	background-image: url('../images/background.jpg');
+	background-size: 100% 100%;
+}
+
+h2{
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: proza;
+}
+
+.table th, td {
+   text-align: center;   
+   font-weight: bold;
+}
+
+.carousel{
+	height: 400px;
+}
+
+.carousel-inner {
+  overflow: hidden;
+}
+
+.carousel-indicators{
+	position: absolute;
+	top: 450px;
+}
+
+.carousel-caption{
+	position: absolute;
+	top: 30px;
+	left: 25px;
+	height: 380px;
+	padding: 5px;
+	border: 1px solid darkblue;
+	border-radius: 10px;
+	background-color: lightblue;
+	opacity: 0.75;
+	color: black;
+	width: 300px;
+	font-size: 11px;
+}
+
+.up{
+	padding: 3px 5px;
+}
+
+.up > h4{
+	margin-top: 10px;
+	text-align: center;
+	font-family: proza;
+}
+
+.up > img{
+	position: absolute;
+	top: 40px;
+	right: 10px;
+}
+
+.alerts{
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	border: 1px solid royalblue;
+	border-radius: 10px;
+	background-color: lightskyblue;
+	padding: 3px;
+  width: 278px;
+  font-size: 12px;
+	font-weight: bold;
+}
+
+.carousel-control-next,.carousel-control-prev{
+	position: absolute;
+	top: 430px;
+}
+
+.carousel-control-next{
+	right: -5px;
+}
+
+.alert-info{
+	position: absolute;
+	bottom: -50px;
+	left: 65px;
+	text-align: center;
+	border-radius: 10px;
+	color: white;
+}
+
+
+label{
+	font-size: 18px;
+	font-family: proza;
+	color: #365264;
+}
+
+input[type=text]{
+	font-size: 13px;
+	background-color: white;
+	color: dodgerblue;
+	padding: 3px;
+}
+
+select{
+	font-size: 13px;
+	background-color: white;
+	color: dodgerblue;
+	padding: 3px;
+	border-radius: 10px;
+	outline: none;
+}
+
+#uvIndex{
+	display: inline-block;
+	background-color: white;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+#uvIndex > span{
+	font-weight: bold;
+}
+
+#windS, #wind, #windDirection, #windDirectionS{
+	text-transform: lowercase;
+}
+
+#date{
+	font-family: proza;
+}
+
+.reward-tip {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.reward-code {
+  width: 130px;
+  height: 130px;
+}
+
+#sigleAudioRecognizeResult {
+  margin-top: 8px;
+}
+#albumAudioRecognizeResult{
+  margin-top: 8px;
+  height: 240px;
+  overflow: auto;
+}
+.table-download-row {
+  line-height: 28px;
+}
+.table-download-col {
+  width: 55px;
+}
+.table-download-btn {
+  font-size: 12px;
+}
