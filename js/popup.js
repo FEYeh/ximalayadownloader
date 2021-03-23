@@ -7,7 +7,11 @@ $(document).ready(function () {
       const url = tab.url;
 
       const params = url.split("/");
-      const trackId = params[params.length - 1];
+      let trackId = params[params.length - 1];
+      if (trackId == "") {
+        // 是专辑，没有单个音频的id
+        return;
+      }
       console.log(`trackId=${trackId}`);
 
       const dataUrl = `http://www.ximalaya.com/tracks/${trackId}.json`;
