@@ -151,7 +151,7 @@ $(document).ready(function () {
       );
       tracks.forEach((t, index) => {
         $(`#btn-${t.trackId}`).click(async function () {
-          const name = `${index + 1}-${t.title}`;
+          const name = `${index < 10 ? `0${index + 1}` : index + 1}-${t.title}`;
           await downloadByTrackId(t.trackId, name);
         });
       });
@@ -161,7 +161,9 @@ $(document).ready(function () {
       $("#downloadAllBtn").click(async function (e) {
         for (let index = 0; index < tracks.length; index++) {
           const track = tracks[index];
-          const name = `${index + 1}-${track.title}`;
+          const name = `${index < 10 ? `0${index + 1}` : index + 1}-${
+            track.title
+          }`;
           await downloadByTrackId(track.trackId, name);
           $("#albumAudioRecognizeAlerts").html(
             `<div class="alerts">开始下载-${name}</div>`
