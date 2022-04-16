@@ -14,6 +14,7 @@
 		"16": "favicon.png"
 	},
 	"permissions": [
+		"downloads",
 		"cookies",
 		"tabs",
 		"notifications",
