@@ -108,13 +108,9 @@ $(document).ready(function () {
       const len = lastPageSize === 0 ? iter : iter + 1;
       let tracks = [];
       for (let index = 1; index <= len; index++) {
-        let pageSize = iter * 200;
-        if (index === len) {
-          pageSize = lastPageSize;
-        }
         albumUrl = `http://mobile.ximalaya.com/mobile/v1/album/track/ts-${
           Date.now() * 1000
-        }?albumId=${albumId}&device=android&isAsc=true&isQueryInvitationBrand=true&pageId=${index}&pageSize=${pageSize}&pre_page=0`;
+        }?albumId=${albumId}&device=android&isAsc=true&isQueryInvitationBrand=true&pageId=${index}&pageSize=${200}&pre_page=0`;
         const res2 = await getPromise(albumUrl);
         console.log("res2", res2);
         await sleep(500);
