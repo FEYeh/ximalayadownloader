@@ -18,7 +18,8 @@
 		"cookies",
 		"tabs",
 		"notifications",
-		"*://*.ximalaya.com/*"
+		"*://*.ximalaya.com/*",
+		"*://*.xunlei.com/*"
 	],
 	"content_scripts": [
 		{
