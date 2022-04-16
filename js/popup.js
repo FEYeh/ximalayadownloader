@@ -57,7 +57,7 @@ $(document).ready(function () {
 
       const result = await $.get(dataUrl);
       const title = result.title;
-      if (result?.data?.is_free === false && result?.data?.is_paid === false) {
+      if (result?.is_free === false && result?.is_paid === false) {
         const href32 = result.play_path_32;
         const href64 = result.play_path_64;
 
