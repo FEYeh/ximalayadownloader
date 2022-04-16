@@ -2797,10 +2797,11 @@ window.thunderLink = (function (e) {
           g.init(l.pid);
         try {
           r.get(
-            "//api-xl9-ssl.xunlei.com/xlws/partner/is_partner?union_id=".concat(
+            "https://api-xl9-ssl.xunlei.com/xlws/partner/is_partner?union_id=".concat(
               l.pid
             )
           ).then(function (r) {
+            console.log(r)
             if (r.data.data.is_exist)
               A
                 ? alert(
