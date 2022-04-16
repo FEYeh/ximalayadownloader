@@ -1,9 +1,17 @@
+function prefixZero(num, n) {
+  return (Array(n).join(0) + num).slice(-n);
+}
+
 const un = unknown();
 const getVipAudioUrl = async (trackId) => {
   const data = await getPromise(
     `https://mpay.ximalaya.com/mobile/track/pay/${trackId}/?device=pc`,
     { json: true }
   );
+  if (data?.ret === 999) {
+    alert(data?.msg);
+    return;
+  }
   const m = function (e) {
     return e.indexOf("audio.pay.xmcdn.com") > -1 ? "https://vod.xmcdn.com" : e;
   };
@@ -34,12 +42,13 @@ const downloadByTrackId = async (trackId, name, downloadNow = true) => {
   if (noVipRes?.data?.isVipFree === false && noVipRes?.data?.isPaid === false) {
     console.log("普通专辑");
     downloadNow && downloadFile(noVipRes.data.src, name);
-    return;
+    return noVipRes.data.src;
   }
 
   console.log("vip专辑，请先登录");
   const vipUrl = await getVipAudioUrl(trackId);
-  downloadNow && downloadFile(vipUrl, name);
+  vipUrl && downloadNow && downloadFile(vipUrl, name);
+  return vipUrl;
 };
 
 $(document).ready(function () {
@@ -134,7 +143,8 @@ $(document).ready(function () {
 
       $("#albumAudioRecognizeResult").html(
         `
-        <div><button id="downloadAllBtn" type="button" class="btn btn-link btn-sm" >点击下载整张专辑音频</button></div>
+        <div><button id="downloadAllBtn" type="button" class="btn btn-link btn-sm" >下载整张专辑音频</button></div>
+        <div><button id="downloadAllByThunderBtn" type="button" class="btn btn-link btn-sm" >迅雷批量下载</button></div>
         <table class="table table-hover table-sm">
           <thead class="thead-inverse">
             <tr>
@@ -155,13 +165,13 @@ $(document).ready(function () {
           await downloadByTrackId(t.trackId, name);
         });
       });
-      $("#albumAudioRecognizeAlerts").click(function () {
-        $("#albumAudioRecognizeAlerts").html("");
-      });
+      // $("#albumAudioRecognizeAlerts").click(function () {
+      //   $("#albumAudioRecognizeAlerts").html("");
+      // });
       $("#downloadAllBtn").click(async function (e) {
         for (let index = 0; index < tracks.length; index++) {
           const track = tracks[index];
-          const name = `${index < 10 ? `0${index + 1}` : index + 1}-${
+          const name = `${prefixZero(index, count.toString().length)}-${
             track.title
           }`;
           await downloadByTrackId(track.trackId, name);
@@ -173,6 +183,38 @@ $(document).ready(function () {
         $("#albumAudioRecognizeAlerts").html(
           `<div class="alerts">专辑音频全部下载完成</div>`
         );
+      });
+      $("#downloadAllByThunderBtn").click(async function (e) {
+        const tasks = [];
+        for (let index = 0; index < tracks.length; index++) {
+          const track = tracks[index];
+          const name = `${prefixZero(index, count.toString().length)}-${
+            track.title
+          }`;
+          const url = await downloadByTrackId(track.trackId, name, false);
+          if (!url) {
+            return;
+          }
+          tasks.push({
+            name,
+            url,
+            dir: track.albumTitle,
+          });
+          $("#albumAudioRecognizeAlerts").html(
+            `<div class="alerts">正在获取音频链接${index + 1}-${name}</div>`
+          );
+          await sleep(800);
+        }
+        $("#albumAudioRecognizeAlerts").html(
+          `<div class="alerts">专辑音频链接获取完成</div>`
+        );
+        if (thunderLink) {
+          thunderLink.newTask({
+            tasks,
+          });
+        } else {
+          alert("迅雷插件未加载");
+        }
       });
     });
   });
