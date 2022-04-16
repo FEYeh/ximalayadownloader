@@ -18,8 +18,19 @@
 		"cookies",
 		"tabs",
 		"notifications",
+		"clipboardWrite",
+		"clipboardRead",
 		"*://*.ximalaya.com/*",
-		"*://*.xunlei.com/*"
+		"*://*.xunlei.com/*",
+		"*://xunlei.com/*"
+	],
+	"optional_permissions": [
+		"unlimitedStorage"
+	],
+	"host_permissions": [
+		"*://*.ximalaya.com/*",
+		"*://*.xunlei.com/*",
+		"*://xunlei.com/*"
 	],
 	"content_scripts": [
 		{
