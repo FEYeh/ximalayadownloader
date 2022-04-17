@@ -141,7 +141,7 @@ $(document).ready(function () {
         } else if (historyIndex + 1 <= count) {
           $("#liveToastBody").html("您之前下载到第" + historyIndex + "张音频");
           $("#liveToast").toast("show");
-          $("#startInput").val(historyIndex + 1);
+          $("#startInput").val(+historyIndex + 1);
         }
       }
       const iter = Math.floor(count / 200);
