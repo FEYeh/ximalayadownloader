@@ -1,3 +1,6 @@
+* {
+	outline: none;
+}
 body{
 	width: 350px;
 	height: 400px;
@@ -162,4 +165,39 @@ select{
 }
 .table-download-btn {
   font-size: 12px;
+}
+.form-check-span {
+	font-size: 12px;
+}
+.config-row {
+	width: 80%;
+	margin: 10px auto 0 auto;
+	height: 34px;
+	line-height: 34px;
+	display: flex;
+	align-items: center;
+}
+
+.config-checkbox {
+	width: 58px;
+	display: flex;
+	align-items: center;
+	height: 34px;
+	line-height: 34px;
+}
+
+.config-checkbox input {
+	margin-top: 0;
+}
+.config-checkbox label {
+	margin: 0;
+}
+.config-start {
+	flex: 1;
+}
+.config-split {
+	width: 18px;
+}
+.config-end {
+	flex: 1;
 }

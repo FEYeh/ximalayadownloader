@@ -32,6 +32,25 @@ const getVipAudioUrl = async (trackId) => {
   return v;
 };
 
+const validate = (start, end, total) => {
+  if (!start || start <= 0) {
+    $("#liveToastBody").html("起始位置请从1开始");
+    $("#liveToast").toast("show");
+    return false;
+  }
+  if (start > end) {
+    $("#liveToastBody").html("起始位置必须小于结束位置");
+    $("#liveToast").toast("show");
+    return false;
+  }
+  if (end > total) {
+    $("#liveToastBody").html("结束位置必须小于等于总数量");
+    $("#liveToast").toast("show");
+    return false;
+  }
+  return true;
+};
+
 const downloadByTrackId = async (trackId, name, downloadNow = true) => {
   // 非vip下载
   const noVipRes = await getPromise(
@@ -112,6 +131,19 @@ $(document).ready(function () {
 
       const res = await getPromise(albumUrl);
       const count = res.data.totalCount;
+      $("#startInput").val(1);
+      $("#endInput").val(count);
+      const historyIndex = localStorage.getItem(albumId);
+      if (historyIndex) {
+        if (historyIndex === count) {
+          $("#liveToastBody").html("您之前已下载完此专辑");
+          $("#liveToast").toast("show");
+        } else if (historyIndex + 1 <= count) {
+          $("#liveToastBody").html("您之前下载到第" + historyIndex + "张音频");
+          $("#liveToast").toast("show");
+          $("#startInput").val(historyIndex + 1);
+        }
+      }
       const iter = Math.floor(count / 200);
       const lastPageSize = count % 200;
       const len = lastPageSize === 0 ? iter : iter + 1;
@@ -159,9 +191,13 @@ $(document).ready(function () {
         </table>
         `
       );
+      const hasPrefix = $("#hasPrefixCheckbox").val();
+      console.log("hasPrefix", hasPrefix);
       tracks.forEach((t, index) => {
         $(`#btn-${t.trackId}`).click(async function () {
-          const name = `${index < 10 ? `0${index + 1}` : index + 1}-${t.title}`;
+          const name = hasPrefix
+            ? `${prefixZero(index, count.toString().length)}-${t.title}`
+            : t.title;
           await downloadByTrackId(t.trackId, name);
         });
       });
@@ -169,15 +205,21 @@ $(document).ready(function () {
       //   $("#albumAudioRecognizeAlerts").html("");
       // });
       $("#downloadAllBtn").click(async function (e) {
-        for (let index = 0; index < tracks.length; index++) {
+        const start = Number($("#startInput").val()) || 0;
+        const end = Number($("#endInput").val()) || 0;
+        if (!validate(start, end, tracks.length)) {
+          return;
+        }
+        for (let index = start - 1; index < end; index++) {
           const track = tracks[index];
-          const name = `${prefixZero(index, count.toString().length)}-${
-            track.title
-          }`;
+          const name = hasPrefix
+            ? `${prefixZero(index, count.toString().length)}-${track.title}`
+            : track.title;
           await downloadByTrackId(track.trackId, name);
           $("#albumAudioRecognizeAlerts").html(
             `<div class="alerts">开始下载-${name}</div>`
           );
+          localStorage.setItem(albumId, index + 1);
           await sleep(1000);
         }
         $("#albumAudioRecognizeAlerts").html(
@@ -185,12 +227,17 @@ $(document).ready(function () {
         );
       });
       $("#downloadAllByThunderBtn").click(async function (e) {
+        const start = Number($("#startInput").val()) || 0;
+        const end = Number($("#endInput").val()) || 0;
+        if (!validate(start, end, tracks.length)) {
+          return;
+        }
         const tasks = [];
-        for (let index = 0; index < tracks.length; index++) {
+        for (let index = start; index < end; index++) {
           const track = tracks[index];
-          const name = `${prefixZero(index, count.toString().length)}-${
-            track.title
-          }`;
+          const name = hasPrefix
+            ? `${prefixZero(index, count.toString().length)}-${track.title}`
+            : track.title;
           const url = await downloadByTrackId(track.trackId, name, false);
           if (!url) {
             return;
