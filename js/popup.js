@@ -175,8 +175,8 @@ $(document).ready(function () {
 
       $("#albumAudioRecognizeResult").html(
         `
-        <div><button id="downloadAllBtn" type="button" class="btn btn-link btn-sm" >下载整张专辑音频</button></div>
-        <div><button id="downloadAllByThunderBtn" type="button" class="btn btn-link btn-sm" >迅雷批量下载</button></div>
+        <div><button id="downloadAllBtn" type="button" class="btn btn-link btn-sm" >批量下载专辑音频</button></div>
+        <div><button id="downloadAllByThunderBtn" type="button" class="btn btn-link btn-sm" >迅雷批量下载(windows试用)</button></div>
         <table class="table table-hover table-sm">
           <thead class="thead-inverse">
             <tr>
