@@ -20,17 +20,13 @@
 		"notifications",
 		"clipboardWrite",
 		"clipboardRead",
-		"*://*.ximalaya.com/*",
-		"*://*.xunlei.com/*",
-		"*://xunlei.com/*"
+		"*://*.ximalaya.com/*"
 	],
 	"optional_permissions": [
 		"unlimitedStorage"
 	],
 	"host_permissions": [
-		"*://*.ximalaya.com/*",
-		"*://*.xunlei.com/*",
-		"*://xunlei.com/*"
+		"*://*.ximalaya.com/*"
 	],
 	"content_scripts": [
 		{
@@ -42,8 +38,7 @@
 			"js": [
 				"js/jquery-3.5.1.js",
 				"js/bootstrap.js",
-				"js/popup.js",
-				"js/thunder-link.js"
+				"js/popup.js"
 			]
 		}
 	],

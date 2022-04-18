@@ -176,7 +176,6 @@ $(document).ready(function () {
       $("#albumAudioRecognizeResult").html(
         `
         <div><button id="downloadAllBtn" type="button" class="btn btn-link btn-sm" >批量下载专辑音频</button></div>
-        <div><button id="downloadAllByThunderBtn" type="button" class="btn btn-link btn-sm" >迅雷批量下载(windows试用)</button></div>
         <table class="table table-hover table-sm">
           <thead class="thead-inverse">
             <tr>
@@ -225,43 +224,6 @@ $(document).ready(function () {
         $("#albumAudioRecognizeAlerts").html(
           `<div class="alerts">专辑音频全部下载完成</div>`
         );
-      });
-      $("#downloadAllByThunderBtn").click(async function (e) {
-        const start = Number($("#startInput").val()) || 0;
-        const end = Number($("#endInput").val()) || 0;
-        if (!validate(start, end, tracks.length)) {
-          return;
-        }
-        const tasks = [];
-        for (let index = start; index < end; index++) {
-          const track = tracks[index];
-          const name = hasPrefix
-            ? `${prefixZero(index, count.toString().length)}-${track.title}`
-            : track.title;
-          const url = await downloadByTrackId(track.trackId, name, false);
-          if (!url) {
-            return;
-          }
-          tasks.push({
-            name,
-            url,
-            dir: track.albumTitle,
-          });
-          $("#albumAudioRecognizeAlerts").html(
-            `<div class="alerts">正在获取音频链接${index + 1}-${name}</div>`
-          );
-          await sleep(800);
-        }
-        $("#albumAudioRecognizeAlerts").html(
-          `<div class="alerts">专辑音频链接获取完成</div>`
-        );
-        if (thunderLink) {
-          thunderLink.newTask({
-            tasks,
-          });
-        } else {
-          alert("迅雷插件未加载");
-        }
       });
     });
   });
