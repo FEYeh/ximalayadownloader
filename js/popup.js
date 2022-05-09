@@ -191,13 +191,15 @@ $(document).ready(function () {
         `
       );
       const hasPrefix = $("#hasPrefixCheckbox").val();
-      console.log("hasPrefix", hasPrefix);
       tracks.forEach((t, index) => {
         $(`#btn-${t.trackId}`).click(async function () {
+          const prefixZeroNum = $("#prefixZeroInput").val();
+          const prefixIndex =
+            +prefixZeroNum > index ? 0 : index - +prefixZeroNum + 1;
           const name = hasPrefix
-            ? `${prefixZero(index, count.toString().length)}-${t.title}`
+            ? `${prefixZero(prefixIndex, count.toString().length)}-${t.title}`
             : t.title;
-          await downloadByTrackId(t.trackId, name);
+          await downloadByTrackId(t.trackId, name + ".m4a");
         });
       });
       // $("#albumAudioRecognizeAlerts").click(function () {
@@ -206,15 +208,20 @@ $(document).ready(function () {
       $("#downloadAllBtn").click(async function (e) {
         const start = Number($("#startInput").val()) || 0;
         const end = Number($("#endInput").val()) || 0;
+        const prefixZeroNum = $("#prefixZeroInput").val();
         if (!validate(start, end, tracks.length)) {
           return;
         }
         for (let index = start - 1; index < end; index++) {
           const track = tracks[index];
+          const prefixIndex =
+            +prefixZeroNum > index ? 0 : index - +prefixZeroNum + 1;
           const name = hasPrefix
-            ? `${prefixZero(index, count.toString().length)}-${track.title}`
+            ? `${prefixZero(prefixIndex, count.toString().length)}-${
+                track.title
+              }`
             : track.title;
-          await downloadByTrackId(track.trackId, name);
+          await downloadByTrackId(track.trackId, name + ".m4a");
           $("#albumAudioRecognizeAlerts").html(
             `<div class="alerts">开始下载-${name}</div>`
           );

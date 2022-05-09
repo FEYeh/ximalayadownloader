@@ -42,11 +42,17 @@
 					</div>
 					<div class="middle">
 						<button id="getAlbumAudioBtn" type="button" class="btn btn-primary">点我识别专辑音频</button>
+
 						<div>
+							<div class="config-row-big">
+								<div>0前导符个数：&nbsp;&nbsp;</div>
+								<div class="prefixZeroInput"><input id="prefixZeroInput" type="number" class="form-control" value="0">
+								</div>
+							</div>
 							<div class="config-row">
 								<div class="config-checkbox">
 									<input id="hasPrefixCheckbox" class="form-check-input" type="checkbox" checked />
-									<label class="form-check-span" for="hasPrefixCheckbox">加序号</label>
+									<label class="form-check-span" for="hasPrefixCheckbox">下载范围</label>
 								</div>
 								<div class="config-start">
 									<input id="startInput" type="number" class="form-control" placeholder="起始序号" value="0">
