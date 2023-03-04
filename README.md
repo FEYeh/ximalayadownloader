@@ -24,10 +24,11 @@
 1. 打开专辑地址：[https://www.ximalaya.com/youshengshu/240506/](https://www.ximalaya.com/youshengshu/240506/)
 2. 点击 ximalayadownloader 插件
 3. 点击右下方箭头切换到【识别专辑】Tab
-4. 点击【点我识别专辑音频】
-5. 可以选择点击下载整张专辑音频，也可以单个音频文件下载
+4. 点击【点我识别专辑音频】，会自动识别专辑内所有的音频
+5. 可以选择下载范围，也可以根据数量添加前导符，会从1开始排序
+6. 可以选择点击下载整张专辑音频，也可以单个音频文件下载
 
-![alt 下载专辑内所有音频界面](http://ww1.sinaimg.cn/large/007ZqBsIgy1gmqu10idpnj31mi0smn2m.jpg)
+![alt 下载专辑内所有音频界面](http://tva1.sinaimg.cn/large/8d9d72abgy1hbnn8n6vf3j20jg0qmn74.jpg)
 
 ### 注意
 
