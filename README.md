@@ -31,9 +31,10 @@
 ![alt 下载专辑内所有音频界面](http://tva1.sinaimg.cn/large/8d9d72abgy1hbnn8n6vf3j20jg0qmn74.jpg)
 
 ### 注意
-$\color{#58A6FF}\textsf{\Large\&#x24D8;\kern{0.2cm}\normalsize 如果是你是 vip 会员，请先登录账号后可下载 vip 免费的音频}$
+$\color{red}\textsf{\Middle\&#x24D8;\kern{0.2cm}\normalsize 如果是你是 vip 会员，请先登录账号后可下载 vip 免费的音频}$
 
-$\color{#58A6FF}\textsf{\Large\&#x24D8;\kern{0.2cm}\normalsize 如果批量下载需要一个一个保存，则需要修改Chrome浏览器的下载配置。解决方法：在Chrome浏览器地址栏输入 ”chrome://settings/“ 或者点击右上角的“自定义及控制Chrome”图标（**三个竖排小黑点**），打开Chrome浏览器的设置页面，点击**下载内容**，将“下载前询问每个文件的保存位置”选项关闭即可。}$
+#### $\textcolor{red}{\textsf{如果批量下载需要一个一个保存，则需要修改Chrome浏览器的下载配置。解决方法：在Chrome浏览器地址栏输入 ”chrome://settings/“ 或者点击右上角的“自定义及控制Chrome”图标（**三个竖排小黑点**），打开Chrome浏览器的设置页面，点击**下载内容**，将“下载前询问每个文件的保存位置”选项关闭即可。}}$ 
+
 
 若插件不可用，请在赞赏留言中留下您的微信，收到消息后我会尽快修复
 
