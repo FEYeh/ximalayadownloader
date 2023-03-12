@@ -31,7 +31,7 @@
 ![alt 下载专辑内所有音频界面](http://tva1.sinaimg.cn/large/8d9d72abgy1hbnn8n6vf3j20jg0qmn74.jpg)
 
 ### 注意
-
+$\color{#58A6FF}\textsf{\Large\&#x24D8;\kern{0.2cm}\normalsize Note}$
  -$$\color{red}{如果是你是 vip 会员，请先登录账号后可下载 vip 免费的音频  
 若插件不可用，请在赞赏留言中留下您的微信，收到消息后我会尽快修复}$$
 
